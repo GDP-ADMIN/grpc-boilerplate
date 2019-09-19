@@ -1,0 +1,22 @@
+syntax = 'proto3';
+
+option java_multiple_files = true;
+package com.muhtar.rpc.book;
+
+service BookshelfService {
+    rpc readAll (Empty) returns (BookMessageList);
+    rpc addBook (BookMessage) returns (BookMessage);
+}
+
+message BookMessage {
+    string title = 1;
+    string author = 2;
+    string isbn = 3;
+}
+
+message BookMessageList {
+    repeated BookMessage book = 1;
+}
+
+message Empty {}
+
