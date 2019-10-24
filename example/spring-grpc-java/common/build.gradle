@@ -1,4 +1,6 @@
 plugins {
+    id 'org.springframework.boot' version '2.1.8.RELEASE'
+    id 'io.spring.dependency-management' version '1.0.8.RELEASE'
     id 'java'
     id 'idea'
     id 'com.google.protobuf' version '0.8.10'
@@ -13,6 +15,11 @@ repositories {
 }
 
 dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    compile 'org.springframework:spring-jdbc'
+    compile 'io.github.lognet:grpc-spring-boot-starter:3.4.1'
+
     implementation 'io.grpc:grpc-netty-shaded:1.24.0'
     implementation 'io.grpc:grpc-protobuf:1.24.0'
     implementation 'io.grpc:grpc-stub:1.24.0'
@@ -21,6 +28,9 @@ dependencies {
 
     compileOnly 'org.projectlombok:lombok:1.18.10'
     annotationProcessor 'org.projectlombok:lombok:1.18.10'
+
+    runtimeOnly 'mysql:mysql-connector-java'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
 
 protobuf {
