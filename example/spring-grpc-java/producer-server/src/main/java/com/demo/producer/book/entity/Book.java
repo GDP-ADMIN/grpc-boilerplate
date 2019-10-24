@@ -7,7 +7,7 @@ import lombok.Setter;
 import org.springframework.data.annotation.Id;
 
 import javax.persistence.*;
-import org.jetbrains.annotations.NotNull;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 @Builder

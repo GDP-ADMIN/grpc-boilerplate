@@ -1,17 +1,24 @@
 plugins {
     id 'java'
+    id 'idea'
+    id 'com.google.protobuf' version '0.8.10'
 }
 
-group 'com.muhtar.grpc'
 version '0.0.1-SNAPSHOT'
 
-sourceCompatibility = 1.8
-
-repositories {
-    mavenCentral()
-}
-
-dependencies {
-    compile project(":common")
-    testCompile group: 'junit', name: 'junit', version: '4.12'
+protobuf {
+    generatedFilesBaseDir = "src/gen"
+    protoc {
+        artifact = "com.google.protobuf:protoc:3.10.0"
+    }
+    plugins {
+        grpc {
+            artifact = 'io.grpc:protoc-gen-grpc-java:1.24.0'
+        }
+    }
+    generateProtoTasks {
+        all()*.plugins {
+            grpc {}
+        }
+    }
 }
