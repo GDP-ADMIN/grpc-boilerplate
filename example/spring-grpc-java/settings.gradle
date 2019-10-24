@@ -1,0 +1,5 @@
+rootProject.name = 'grpc-java'
+include 'producer-server'
+include 'common'
+include 'consumer-server'
+
