@@ -1,4 +1,4 @@
-package com.demo.consumer.book.entity;
+package com.demo.producer.book.entity;
 
 import com.muhtar.rpc.book.BookMessage;
 import lombok.Builder;
@@ -7,7 +7,7 @@ import lombok.Setter;
 import org.springframework.data.annotation.Id;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
+import org.jetbrains.annotations.NotNull;
 import javax.validation.constraints.Size;
 
 @Builder

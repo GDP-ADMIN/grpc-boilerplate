@@ -1,14 +1,14 @@
-package com.demo.consumer.book.service;
+package com.demo.producer.book.service;
 
-import com.demo.consumer.book.entity.Book;
+import com.demo.producer.book.entity.Book;
 import com.muhtar.rpc.book.BookMessage;
 import com.muhtar.rpc.book.BookMessageList;
 import com.muhtar.rpc.book.BookServiceGrpc;
 import com.muhtar.rpc.book.Empty;
 import io.grpc.stub.StreamObserver;
-import org.springframework.stereotype.Service;
+import org.lognet.springboot.grpc.GRpcService;
 
-@Service
+@GRpcService
 public class GrpcBookService extends BookServiceGrpc.BookServiceImplBase {
 
     public void findAll(Empty request, StreamObserver<BookMessageList> responseObserver) {

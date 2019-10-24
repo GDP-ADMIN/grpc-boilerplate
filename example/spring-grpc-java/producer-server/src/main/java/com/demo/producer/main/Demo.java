@@ -1,4 +1,4 @@
-package com.demo.consumer.main;
+package com.demo.producer.main;
 
 import org.springframework.boot.SpringApplication;
 

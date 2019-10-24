@@ -18,9 +18,7 @@ public class TestDemo {
             BookServiceGrpc.newBlockingStub(managedChannel);
 
         BookMessageList bookMessageList = bookServiceBlockingStub.findAll(Empty.newBuilder().build());
-
         BookMessage bookMessage = bookMessageList.getBook(0);
-
         System.out.println(bookMessage);
     }
 }
