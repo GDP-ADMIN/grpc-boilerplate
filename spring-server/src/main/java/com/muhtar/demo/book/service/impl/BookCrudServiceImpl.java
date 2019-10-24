@@ -3,16 +3,17 @@ package com.muhtar.demo.book.service.impl;
 import com.muhtar.demo.book.entity.Book;
 import com.muhtar.demo.book.repository.BookRepository;
 import com.muhtar.demo.book.service.BookCrudService;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
 @Service
+@RequiredArgsConstructor
 public class BookCrudServiceImpl implements BookCrudService {
-    @Autowired
-    private BookRepository bookRepository;
+
+    private final BookRepository bookRepository;
 
     @Override
     public List<Book> readAll() {

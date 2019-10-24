@@ -4,6 +4,7 @@ import com.muhtar.demo.book.entity.Book;
 import com.muhtar.demo.book.service.BookCrudService;
 import com.muhtar.rpc.book.*;
 import io.grpc.stub.StreamObserver;
+import lombok.RequiredArgsConstructor;
 import org.lognet.springboot.grpc.GRpcService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -12,11 +13,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import java.util.List;
 
 @GRpcService
+@RequiredArgsConstructor
 public class BookshelfServiceImpl extends BookshelfServiceGrpc.BookshelfServiceImplBase {
-    private final Logger LOGGER = LoggerFactory.getLogger(BookshelfServiceImpl.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(BookshelfServiceImpl.class);
 
-    @Autowired
-    private BookCrudService bookCrudService;
+    private final BookCrudService bookCrudService;
 
     public void readAll(Empty request, StreamObserver<BookMessageList> responseObserver)
     {
