@@ -1,0 +1,23 @@
+syntax = 'proto3';
+
+option java_multiple_files = true;
+package com.muhtar.rpc.book;
+
+service BookService {
+    rpc findAll (Empty) returns (BookMessageList);
+    rpc findBookByQuery(BookMessage) returns (BookMessageList);
+    rpc addBook (BookMessage) returns (BookMessage);
+}
+
+message BookMessage {
+    string title = 1;
+    string author = 2;
+    string isbn = 3;
+    string category = 4;
+}
+
+message BookMessageList {
+    repeated BookMessage book = 1;
+}
+
+message Empty {}

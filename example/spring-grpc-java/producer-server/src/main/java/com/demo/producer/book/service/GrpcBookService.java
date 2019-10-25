@@ -13,8 +13,8 @@ import org.lognet.springboot.grpc.GRpcService;
 import java.util.List;
 import java.util.stream.Collectors;
 
-@GRpcService
 @RequiredArgsConstructor
+@GRpcService
 public class GrpcBookService extends BookServiceGrpc.BookServiceImplBase {
 
     private final BookRepository bookRepository;
