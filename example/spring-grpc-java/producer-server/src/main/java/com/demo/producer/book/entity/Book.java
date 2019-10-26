@@ -4,7 +4,6 @@ import com.muhtar.rpc.book.BookMessage;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
-import org.springframework.data.annotation.Id;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -16,6 +15,7 @@ import javax.validation.constraints.Size;
 @Entity
 @Table(name = "books")
 public class Book {
+
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     private Long id;
