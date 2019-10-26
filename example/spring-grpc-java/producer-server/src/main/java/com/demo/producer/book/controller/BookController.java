@@ -10,18 +10,18 @@ import javax.validation.Valid;
 import java.util.List;
 
 @RequiredArgsConstructor
-@RestController
+@RestController(value = "/books")
 public class BookController {
 
     private final BookCrudService bookCrudService;
 
-    @GetMapping(value = "/books")
+    @GetMapping
     public List<Book> getAllBooks()
     {
         return bookCrudService.findAll();
     }
 
-    @PostMapping(value = "/books")
+    @PostMapping
     public Book addBook(@Valid @RequestBody Book book)
     {
         return bookCrudService.createOne(book);
