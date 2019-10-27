@@ -56,6 +56,5 @@ func callAPI() {
 		data, _ := ioutil.ReadAll(response.Body)
 		var book bookData
 		json.Unmarshal(data, &book)
-		fmt.Println(book.title)
 	}
 }
