@@ -1,9 +1,7 @@
 package com.demo.producer.book.entity;
 
 import com.muhtar.rpc.book.BookMessage;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -12,6 +10,8 @@ import javax.validation.constraints.Size;
 @Builder
 @Getter
 @Setter
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity
 @Table(name = "books")
 public class Book {

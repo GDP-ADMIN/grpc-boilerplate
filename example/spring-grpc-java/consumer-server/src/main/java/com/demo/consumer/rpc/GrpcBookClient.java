@@ -22,10 +22,10 @@ public class GrpcBookClient {
 
     private BookServiceGrpc.BookServiceBlockingStub bookServiceBlockingStub;
 
-    @Value("$grpc.host")
+    @Value("${grpc.host}")
     private String grpcHost;
 
-    @Value("$grpc.port")
+    @Value("${grpc.port}")
     private int grpcPort;
 
     @PostConstruct
