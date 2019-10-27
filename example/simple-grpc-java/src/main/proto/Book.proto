@@ -1,7 +1,9 @@
 syntax = 'proto3';
 
 option java_multiple_files = true;
-package com.muhtar.rpc.book;
+option java_package = "com.muhtar.rpc.book";
+
+package book;
 
 service BookService {
     rpc findAll (Empty) returns (BookMessageList);
