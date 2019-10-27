@@ -21,6 +21,11 @@ public class BookController {
         return  bookClient.getAllBooks();
     }
 
+    @GetMapping(value = "stream")
+    public List<Book> streamAllBooks() {
+        return bookClient.streamAllBooks();
+    }
+
     @PostMapping
     public Book addBook(@RequestBody Book book) {
         return bookClient.addNewBook(book);

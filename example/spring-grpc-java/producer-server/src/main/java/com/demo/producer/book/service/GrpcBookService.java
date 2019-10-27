@@ -11,6 +11,8 @@ import lombok.RequiredArgsConstructor;
 import org.lognet.springboot.grpc.GRpcService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -20,6 +22,7 @@ import java.util.stream.Collectors;
 public class GrpcBookService extends BookServiceGrpc.BookServiceImplBase {
 
     private final Logger LOGGER = LoggerFactory.getLogger(GrpcBookService.class);
+    private final int PAGE_SIZE = 10;
 
     private final BookRepository bookRepository;
 
@@ -45,6 +48,22 @@ public class GrpcBookService extends BookServiceGrpc.BookServiceImplBase {
         LOGGER.info("receiver rpc call addBook");
         Book book = bookRepository.save(Book.fromBookMessage(request));
         responseObserver.onNext(book.toBookMessage());
+        responseObserver.onCompleted();
+    }
+
+    public void streamAll(Empty request, StreamObserver<BookMessageList> responseObserver) {
+        LOGGER.info("receiver rpc call addBook");
+        Page<Book> books;
+        int page = 0;
+        do {
+            books = bookRepository.findAll(PageRequest.of(page, PAGE_SIZE));
+            Iterable<BookMessage> bookMessageIterator = books.stream()
+                    .map(Book::toBookMessage)
+                    .collect(Collectors.toList());
+            BookMessageList bookMessageList = BookMessageList.newBuilder().addAllBook(bookMessageIterator).build();
+            responseObserver.onNext(bookMessageList);
+            page++;
+        } while (books.getTotalElements() > 0);
         responseObserver.onCompleted();
     }
 

@@ -8,5 +8,8 @@
 
 ### Generate code from .proto file
 - Create proto file. If you need sample you can look at `proto/Book.java`
-- Run protoc -I {src dir} {src dir}/Book.proto --go_out=plugins=grpc:{output dir}
+- Run `protoc -I {src dir} {src dir}/Book.proto --go_out=plugins=grpc:{output dir}`
 - Golang code will be generated in output dir
+
+### Generate stub for this project
+- run `./generate.sh`

@@ -4,7 +4,7 @@ import (
 	"context"
 	"flag"
 	"fmt"
-	pb "gogrpc/book" //put file generated from proto file to $GOPATH/src/gogrpc/book
+	pb "gogrpc/book"
 	"log"
 	"net"
 

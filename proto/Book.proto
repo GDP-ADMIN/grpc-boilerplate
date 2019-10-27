@@ -6,9 +6,10 @@ option java_package = "com.muhtar.rpc.book";
 package book;
 
 service BookService {
-    rpc findAll (Empty) returns (BookMessageList);
+    rpc findAll(Empty) returns (BookMessageList);
     rpc findBookByQuery(BookMessage) returns (BookMessageList);
-    rpc addBook (BookMessage) returns (BookMessage);
+    rpc addBook(BookMessage) returns (BookMessage);
+    rpc streamAll(Empty) returns (stream BookMessageList);
 }
 
 message BookMessage {

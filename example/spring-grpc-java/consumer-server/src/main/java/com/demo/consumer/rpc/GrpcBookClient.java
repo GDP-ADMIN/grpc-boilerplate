@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -45,5 +46,20 @@ public class GrpcBookClient {
     public Book addNewBook(Book book) {
         BookMessage response = bookServiceBlockingStub.addBook(book.toBookMessage());
         return Book.fromBookMessage(response);
+    }
+
+    public List<Book> streamAllBooks() {
+        List<Book> result = new ArrayList<>();
+        int pageNumber = 0;
+        while (bookServiceBlockingStub.streamAll(Empty.newBuilder().build()).hasNext()) {
+            LOGGER.info("receive page " + pageNumber);
+            List<Book> page = bookServiceBlockingStub.streamAll(Empty.newBuilder().build()).next()
+                    .getBookList()
+                    .stream()
+                    .map(Book::fromBookMessage)
+                    .collect(Collectors.toList());
+            result.addAll(page);
+        }
+        return result;
     }
 }
