@@ -1,6 +1,6 @@
 ## gRPC with go
 
-### Prerequisite:
+### Requirements
 - Install golang
 - Install [protocol buffer](https://developers.google.com/protocol-buffers/)
 - Make sure you have added `GOPATH` to you environtment variable. And add `$GOPATH/bin` to `PATH`
@@ -12,4 +12,9 @@
 - Golang code will be generated in output dir
 
 ### Generate stub for this project
-- run `./generate.sh`
+- Run `./generate.sh`
+
+### Run example
+- Run server : `go run server.go` in server folder. Currently server is emplemented using dummy data. I suggest you to run producer-server in spring-grpc-java instead.
+- Run client : `go run client.go` in client folder
+- Run benchmark : `go run benchmark.go` in benchmark folder
