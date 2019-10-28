@@ -2,7 +2,7 @@
 
 ### Requirements
 - Install python
-- Install pip 9.0.1 or higher
+- Install pip
 - Install gRPC `pip install grpcio`
 - Install gRPC tools `pip install grpcio-tools`
 
