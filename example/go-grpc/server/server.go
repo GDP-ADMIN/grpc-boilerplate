@@ -45,6 +45,30 @@ func (s *bookServer) AddBook(ctx context.Context, bookMessage *pb.BookMessage) (
 	return bookMessage, nil
 }
 
+func (s *bookServer) StreamAll(req *pb.Empty, srv pb.BookService_StreamAllServer) error {
+	var bookMessages = []*pb.BookMessage{
+		&pb.BookMessage{
+			Title:    "Captain america",
+			Author:   "Stan Lee",
+			Isbn:     "1234567800",
+			Category: "comic",
+		},
+		&pb.BookMessage{
+			Title:    "Iron Man",
+			Author:   "Stan Lee",
+			Isbn:     "1234567800",
+			Category: "comic",
+		},
+	}
+
+	for i := 1; i <= 5; i++ {
+		if err := srv.Send(&pb.BookMessageList{Book: bookMessages}); err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
 func main() {
 	flag.Parse()
 	lis, err := net.Listen("tcp", fmt.Sprintf("0.0.0.0:%d", *port))

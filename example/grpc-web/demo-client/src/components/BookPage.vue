@@ -2,6 +2,7 @@
   <div class="hello">
     <h1>{{ title }}</h1>
     <button v-on:click="fetchBooks">Fetch Books</button>
+    <button v-on:click="fetchBooksStream">Stream Books</button>
     <dir  v-bind:key="index" v-for="(book, index) in books">
       <BookItem v-bind:book="book"/>
     </dir>
@@ -33,7 +34,7 @@ export default {
   },
 
   methods: {
-    fetchBooks: async function() {
+    fetchBooks() {
       let request = new Empty();
       this.client.findAll(request, {}, (err, response) => {
         if (response) {
@@ -43,6 +44,17 @@ export default {
         }
       });
     },
+
+    fetchBooksStream() {
+      let stream = this.client.streamAll(new Empty(), {})
+      this.books = []
+      stream.on('data', (response) => {
+        if (response) {
+          console.log(response.getBookList()[0].getTitle())
+          this.books = this.books.concat(response.getBookList())
+        }
+      });
+    }
   }
 }
 </script>

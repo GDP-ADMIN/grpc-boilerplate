@@ -22,7 +22,7 @@ import java.util.stream.Collectors;
 public class GrpcBookService extends BookServiceGrpc.BookServiceImplBase {
 
     private final Logger LOGGER = LoggerFactory.getLogger(GrpcBookService.class);
-    private final int PAGE_SIZE = 10;
+    private final int PAGE_SIZE = 5;
 
     private final BookRepository bookRepository;
 
@@ -52,18 +52,22 @@ public class GrpcBookService extends BookServiceGrpc.BookServiceImplBase {
     }
 
     public void streamAll(Empty request, StreamObserver<BookMessageList> responseObserver) {
-        LOGGER.info("receiver rpc call addBook");
+        LOGGER.info("receive rpc call streamAllBook");
         Page<Book> books;
         int page = 0;
+        boolean isCompleted = false;
         do {
             books = bookRepository.findAll(PageRequest.of(page, PAGE_SIZE));
             Iterable<BookMessage> bookMessageIterator = books.stream()
                     .map(Book::toBookMessage)
                     .collect(Collectors.toList());
             BookMessageList bookMessageList = BookMessageList.newBuilder().addAllBook(bookMessageIterator).build();
-            responseObserver.onNext(bookMessageList);
-            page++;
-        } while (books.getTotalElements() > 0);
+            isCompleted = bookMessageList.getBookList().size() == 0;
+            if (!isCompleted) {
+                responseObserver.onNext(bookMessageList);
+                page++;
+            }
+        } while (!isCompleted);
         responseObserver.onCompleted();
     }
 
