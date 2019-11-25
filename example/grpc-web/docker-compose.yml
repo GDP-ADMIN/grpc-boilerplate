@@ -3,7 +3,7 @@ services:
   envoy:
     build:
       context: ./
-      dockerfile: ./Dockerfile
-    image: grpcweb/envoy
+      dockerfile: ./envoy.Dockerfile
+    image: bookservice/envoy
     ports:
       - "8085:8085"

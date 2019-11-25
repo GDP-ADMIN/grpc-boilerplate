@@ -1,7 +1,5 @@
 <template>
-    <div class="book-item">
-        <p>{{bookMessage.title}}</p>
-    </div>
+    <p>{{book.getTitle()}} : {{book.getAuthor()}}</p>
 </template>>
 
 <script>
@@ -10,7 +8,7 @@ import { BookMessage } from '../grpc/Book_pb'
 export default {
     name: 'BookItem',
     props: {
-        bookMessage: BookMessage        
+        book: BookMessage        
     }
 }
 </script>>
