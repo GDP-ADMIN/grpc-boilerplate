@@ -2,7 +2,7 @@
   <div class="hello">
     <h1>{{ title }}</h1>
     <button v-on:click="fetchBooks">Fetch Books</button>
-    <dir  v-bind:key="book.getTitle()" v-for="book in books">
+    <dir  v-bind:key="index" v-for="(book, index) in books">
       <BookItem v-bind:book="book"/>
     </dir>
   </div>
