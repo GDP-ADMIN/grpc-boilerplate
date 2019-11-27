@@ -1,5 +1,5 @@
 <template>
-    <p>{{book.getTitle()}} : {{book.getAuthor()}}</p>
+    <p>{{book.getTitle()}} -- {{book.getAuthor()}}</p>
 </template>>
 
 <script>
@@ -11,4 +11,4 @@ export default {
         book: BookMessage        
     }
 }
-</script>>
+</script>

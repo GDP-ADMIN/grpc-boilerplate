@@ -1,4 +1,4 @@
-version: '3'
+git diffversion: '3'
 services:
   envoy:
     build:
@@ -7,3 +7,8 @@ services:
     image: bookservice/envoy
     ports:
       - "8085:8085"
+    networks:
+      - apps
+networks:
+  apps:
+    driver: host
