@@ -1,0 +1,37 @@
+syntax = "proto3";
+
+import "google/protobuf/empty.proto";
+import "google/api/annotations.proto";
+
+package employee;
+
+enum PhoneType {
+    MOBILE = 0;
+    HOME = 1;
+    WORK = 2;
+}
+
+message PhoneNumber {
+    string number = 1;
+    PhoneType type = 2;
+}
+
+message Employee {
+    string name = 1;
+    int32 id = 2;
+    string email = 3;
+    repeated PhoneNumber phone = 4;
+}
+
+message EmployeeList {
+    repeated Employee EmployeeList = 1;
+}
+
+service EmployeeService {
+    rpc FetchAll(google.protobuf.Empty) returns (EmployeeList) {
+        option (google.api.http) = {
+            get: "/employees"
+        };
+    }
+    rpc StreamAll(google.protobuf.Empty) returns (Employee);
+}

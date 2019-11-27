@@ -9,6 +9,7 @@ import com.muhtar.rpc.book.Empty;
 import io.grpc.stub.StreamObserver;
 import lombok.RequiredArgsConstructor;
 import org.lognet.springboot.grpc.GRpcService;
+import org.omg.PortableInterceptor.Interceptor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
@@ -18,7 +19,6 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @RequiredArgsConstructor
-@GRpcService
 public class GrpcBookService extends BookServiceGrpc.BookServiceImplBase {
 
     private final Logger LOGGER = LoggerFactory.getLogger(GrpcBookService.class);
