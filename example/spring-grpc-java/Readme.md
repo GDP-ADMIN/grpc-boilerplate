@@ -7,7 +7,7 @@ This project consist of two subproject, producer-server and consumer-server.
 
 ### Preparation
 - run `docker-compose up -d`
-- open `localhos:9000` and create database `grpc-test`
+- open `localhos:9000` (php adminer) and create database `grpc-test`
 
 ### Producer server
 This subproject is the gRPC server. gRPC port will be opened in 6565. We provide REST endpoint (port 9090) in this subproject as well for benchmarking purposes.
