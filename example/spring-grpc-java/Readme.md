@@ -11,7 +11,6 @@ This project consist of two subproject, producer-server and consumer-server.
 
 ### Producer server
 This subproject is the gRPC server. gRPC port will be opened in 6565. We provide REST endpoint (port 9090) in this subproject as well for benchmarking purposes.
-- Create database named `producer`
 - Run `./gradlew producer-server:bootRun`
 
 ### Consumer server
