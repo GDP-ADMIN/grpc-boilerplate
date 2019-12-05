@@ -3,6 +3,7 @@ package main
 import (
 	"context"
 	pb "gogrpc/book"
+	"io"
 	"log"
 
 	"google.golang.org/grpc"
@@ -32,7 +33,7 @@ func main() {
 			continue
 		}
 
-		if len(response.Book) == 0 {
+		if len(response.Book) == 0 || err == io.EOF {
 			break
 		}
 

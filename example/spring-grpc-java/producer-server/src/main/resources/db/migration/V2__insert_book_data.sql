@@ -1,3 +1,4 @@
+TRUNCATE `books`;
 insert into books (author, category, isbn, title) values ('Bjorn Pettman', 'biography', '970610157-8', 'mauris enim leo rhoncus');
 insert into books (author, category, isbn, title) values ('Karleen Balme', 'science', '947072320-1', 'lorem ipsum dolor sit');
 insert into books (author, category, isbn, title) values ('Jaimie Franken', 'science', '574166173-4', 'urna ut');
