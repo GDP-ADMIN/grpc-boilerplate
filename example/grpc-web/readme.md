@@ -10,7 +10,7 @@ first from [here](https://github.com/protocolbuffers/protobuf/releases).
 
 Make sure they are both executable and are discoverable from your PATH.
 
-For example, in MacOS, you can do:
+For example:
 
 ```
 $ sudo mv ~/Downloads/protoc-gen-grpc-web-1.0.7-darwin-x86_64 \
