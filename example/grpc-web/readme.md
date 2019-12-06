@@ -28,4 +28,9 @@ $ docker run -d -p 8085:8085 -p 9901:9901 --network=host bookservice/envoy
 ```
 
 ## Run gRPC backend server
-- you can run spring-grpc-java producer server or go-grpc
+- you can run spring-grpc-java producer-server or go-grpc
+
+## Run Clinet
+- go to `demo-client` directory
+- `npm i`
+- `npm run serve`
