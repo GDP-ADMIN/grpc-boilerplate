@@ -17,8 +17,6 @@ var (
 
 type bookServer struct {
 	pb.UnimplementedBookServiceServer
-	pb.BookMessageList
-	pb.BookMessage
 }
 
 func (s *bookServer) FindAll(ctx context.Context, empty *pb.Empty) (*pb.BookMessageList, error) {
