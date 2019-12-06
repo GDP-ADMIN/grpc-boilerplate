@@ -22,22 +22,7 @@ type bookServer struct {
 }
 
 func (s *bookServer) FindAll(ctx context.Context, empty *pb.Empty) (*pb.BookMessageList, error) {
-	var bookMessages = []*pb.BookMessage{
-		&pb.BookMessage{
-			Title:    "Captain america",
-			Author:   "Stan Lee",
-			Isbn:     "1234567800",
-			Category: "comic",
-		},
-		&pb.BookMessage{
-			Title:    "Iron Man",
-			Author:   "Stan Lee",
-			Isbn:     "1234567800",
-			Category: "comic",
-		},
-	}
-
-	return &pb.BookMessageList{Book: bookMessages}, nil
+	return createDummyBookList(), nil
 }
 
 func (s *bookServer) AddBook(ctx context.Context, bookMessage *pb.BookMessage) (*pb.BookMessage, error) {
@@ -46,6 +31,16 @@ func (s *bookServer) AddBook(ctx context.Context, bookMessage *pb.BookMessage) (
 }
 
 func (s *bookServer) StreamAll(req *pb.Empty, srv pb.BookService_StreamAllServer) error {
+
+	for i := 1; i <= 5; i++ {
+		if err := srv.Send(createDummyBookList()); err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
+func createDummyBookList() *pb.BookMessageList {
 	var bookMessages = []*pb.BookMessage{
 		&pb.BookMessage{
 			Title:    "Captain america",
@@ -61,12 +56,7 @@ func (s *bookServer) StreamAll(req *pb.Empty, srv pb.BookService_StreamAllServer
 		},
 	}
 
-	for i := 1; i <= 5; i++ {
-		if err := srv.Send(&pb.BookMessageList{Book: bookMessages}); err != nil {
-			return err
-		}
-	}
-	return nil
+	return &pb.BookMessageList{Book: bookMessages}
 }
 
 func main() {

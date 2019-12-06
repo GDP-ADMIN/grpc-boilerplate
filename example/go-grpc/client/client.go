@@ -18,12 +18,17 @@ func main() {
 
 	client := pb.NewBookServiceClient(conn)
 
-	//response, err := client.FindAll(context.Background(), &pb.Empty{})
-
-	stream, err := client.StreamAll(context.Background(), &pb.Empty{})
+	response, err := client.FindAll(context.Background(), &pb.Empty{})
 
 	if err != nil {
 		log.Fatalf("Error when calling FindAll: %s", err)
+	} else {
+		log.Printf("Unary call, response from server: %v \n", response)
+	}
+
+	stream, err := client.StreamAll(context.Background(), &pb.Empty{})
+	if err != nil {
+		log.Fatalf("Error when calling Stream All: %s", err)
 	}
 
 	i := 0
