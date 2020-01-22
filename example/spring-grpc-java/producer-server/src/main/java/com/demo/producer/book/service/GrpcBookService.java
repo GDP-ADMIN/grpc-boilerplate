@@ -19,6 +19,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @RequiredArgsConstructor
+@GRpcService
 public class GrpcBookService extends BookServiceGrpc.BookServiceImplBase {
 
     private final Logger LOGGER = LoggerFactory.getLogger(GrpcBookService.class);
