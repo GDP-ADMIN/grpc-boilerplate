@@ -1,9 +1,9 @@
 package com.demo.consumer.rpc;
 
 import com.demo.consumer.book.vo.Book;
+import com.google.protobuf.Empty;
 import com.muhtar.rpc.book.BookMessage;
 import com.muhtar.rpc.book.BookServiceGrpc;
-import com.muhtar.rpc.book.Empty;
 import io.grpc.ManagedChannel;
 import io.grpc.ManagedChannelBuilder;
 import org.slf4j.Logger;

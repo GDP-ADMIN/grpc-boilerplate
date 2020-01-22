@@ -1,15 +1,17 @@
 syntax = "proto3";
 
+import "google/protobuf/empty.proto";
+
 option java_multiple_files = true;
 option java_package = "com.muhtar.rpc.book";
 
 package book;
 
 service BookService {
-    rpc findAll(Empty) returns (BookMessageList);
+    rpc findAll(google.protobuf.Empty) returns (BookMessageList);
     rpc findBookByQuery(BookMessage) returns (BookMessageList);
     rpc addBook(BookMessage) returns (BookMessage);
-    rpc streamAll(Empty) returns (stream BookMessageList);
+    rpc streamAll(google.protobuf.Empty) returns (stream BookMessageList);
 }
 
 message BookMessage {
@@ -22,5 +24,3 @@ message BookMessage {
 message BookMessageList {
     repeated BookMessage book = 1;
 }
-
-message Empty {}

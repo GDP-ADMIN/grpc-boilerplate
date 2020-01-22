@@ -8,6 +8,7 @@ import (
 	"log"
 	"net"
 
+	"github.com/golang/protobuf/ptypes/empty"
 	"google.golang.org/grpc"
 )
 
@@ -19,7 +20,7 @@ type bookServer struct {
 	pb.UnimplementedBookServiceServer
 }
 
-func (s *bookServer) FindAll(ctx context.Context, empty *pb.Empty) (*pb.BookMessageList, error) {
+func (s *bookServer) FindAll(ctx context.Context, empty *empty.Empty) (*pb.BookMessageList, error) {
 	return createDummyBookList(), nil
 }
 
@@ -28,7 +29,7 @@ func (s *bookServer) AddBook(ctx context.Context, bookMessage *pb.BookMessage) (
 	return bookMessage, nil
 }
 
-func (s *bookServer) StreamAll(req *pb.Empty, srv pb.BookService_StreamAllServer) error {
+func (s *bookServer) StreamAll(req *empty.Empty, srv pb.BookService_StreamAllServer) error {
 
 	for i := 1; i <= 5; i++ {
 		if err := srv.Send(createDummyBookList()); err != nil {
