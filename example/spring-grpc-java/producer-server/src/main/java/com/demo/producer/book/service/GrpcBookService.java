@@ -2,14 +2,13 @@ package com.demo.producer.book.service;
 
 import com.demo.producer.book.entity.Book;
 import com.demo.producer.book.repository.BookRepository;
+import com.google.protobuf.Empty;
 import com.muhtar.rpc.book.BookMessage;
 import com.muhtar.rpc.book.BookMessageList;
 import com.muhtar.rpc.book.BookServiceGrpc;
-import com.muhtar.rpc.book.Empty;
 import io.grpc.stub.StreamObserver;
 import lombok.RequiredArgsConstructor;
 import org.lognet.springboot.grpc.GRpcService;
-import org.omg.PortableInterceptor.Interceptor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
@@ -31,8 +30,8 @@ public class GrpcBookService extends BookServiceGrpc.BookServiceImplBase {
         LOGGER.info("receiver rpc call findAll");
         List<Book> books = bookRepository.findAll();
         Iterable<BookMessage> bookMessageIterator = books.stream()
-                .map(Book::toBookMessage)
-                .collect(Collectors.toList());
+            .map(Book::toBookMessage)
+            .collect(Collectors.toList());
         BookMessageList bookMessageList = BookMessageList.newBuilder().addAllBook(bookMessageIterator).build();
         responseObserver.onNext(bookMessageList);
         responseObserver.onCompleted();
@@ -60,8 +59,8 @@ public class GrpcBookService extends BookServiceGrpc.BookServiceImplBase {
         do {
             books = bookRepository.findAll(PageRequest.of(page, PAGE_SIZE));
             Iterable<BookMessage> bookMessageIterator = books.stream()
-                    .map(Book::toBookMessage)
-                    .collect(Collectors.toList());
+                .map(Book::toBookMessage)
+                .collect(Collectors.toList());
             BookMessageList bookMessageList = BookMessageList.newBuilder().addAllBook(bookMessageIterator).build();
             isCompleted = bookMessageList.getBookList().size() == 0;
             if (!isCompleted) {

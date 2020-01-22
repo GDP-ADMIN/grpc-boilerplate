@@ -11,6 +11,8 @@
 const grpc = {};
 grpc.web = require('grpc-web');
 
+
+var google_protobuf_empty_pb = require('google-protobuf/google/protobuf/empty_pb.js')
 const proto = {};
 proto.book = require('./Book_pb.js');
 
@@ -69,16 +71,16 @@ proto.book.BookServicePromiseClient =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.book.Empty,
+ *   !proto.google.protobuf.Empty,
  *   !proto.book.BookMessageList>}
  */
 const methodDescriptor_BookService_findAll = new grpc.web.MethodDescriptor(
   '/book.BookService/findAll',
   grpc.web.MethodType.UNARY,
-  proto.book.Empty,
+  google_protobuf_empty_pb.Empty,
   proto.book.BookMessageList,
   /**
-   * @param {!proto.book.Empty} request
+   * @param {!proto.google.protobuf.Empty} request
    * @return {!Uint8Array}
    */
   function(request) {
@@ -91,13 +93,13 @@ const methodDescriptor_BookService_findAll = new grpc.web.MethodDescriptor(
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.book.Empty,
+ *   !proto.google.protobuf.Empty,
  *   !proto.book.BookMessageList>}
  */
 const methodInfo_BookService_findAll = new grpc.web.AbstractClientBase.MethodInfo(
   proto.book.BookMessageList,
   /**
-   * @param {!proto.book.Empty} request
+   * @param {!proto.google.protobuf.Empty} request
    * @return {!Uint8Array}
    */
   function(request) {
@@ -108,7 +110,7 @@ const methodInfo_BookService_findAll = new grpc.web.AbstractClientBase.MethodInf
 
 
 /**
- * @param {!proto.book.Empty} request The
+ * @param {!proto.google.protobuf.Empty} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
@@ -129,7 +131,7 @@ proto.book.BookServiceClient.prototype.findAll =
 
 
 /**
- * @param {!proto.book.Empty} request The
+ * @param {!proto.google.protobuf.Empty} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
@@ -309,16 +311,16 @@ proto.book.BookServicePromiseClient.prototype.addBook =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.book.Empty,
+ *   !proto.google.protobuf.Empty,
  *   !proto.book.BookMessageList>}
  */
 const methodDescriptor_BookService_streamAll = new grpc.web.MethodDescriptor(
   '/book.BookService/streamAll',
   grpc.web.MethodType.SERVER_STREAMING,
-  proto.book.Empty,
+  google_protobuf_empty_pb.Empty,
   proto.book.BookMessageList,
   /**
-   * @param {!proto.book.Empty} request
+   * @param {!proto.google.protobuf.Empty} request
    * @return {!Uint8Array}
    */
   function(request) {
@@ -331,13 +333,13 @@ const methodDescriptor_BookService_streamAll = new grpc.web.MethodDescriptor(
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.book.Empty,
+ *   !proto.google.protobuf.Empty,
  *   !proto.book.BookMessageList>}
  */
 const methodInfo_BookService_streamAll = new grpc.web.AbstractClientBase.MethodInfo(
   proto.book.BookMessageList,
   /**
-   * @param {!proto.book.Empty} request
+   * @param {!proto.google.protobuf.Empty} request
    * @return {!Uint8Array}
    */
   function(request) {
@@ -348,7 +350,7 @@ const methodInfo_BookService_streamAll = new grpc.web.AbstractClientBase.MethodI
 
 
 /**
- * @param {!proto.book.Empty} request The request proto
+ * @param {!proto.google.protobuf.Empty} request The request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
  * @return {!grpc.web.ClientReadableStream<!proto.book.BookMessageList>}
@@ -365,7 +367,7 @@ proto.book.BookServiceClient.prototype.streamAll =
 
 
 /**
- * @param {!proto.book.Empty} request The request proto
+ * @param {!proto.google.protobuf.Empty} request The request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
  * @return {!grpc.web.ClientReadableStream<!proto.book.BookMessageList>}
