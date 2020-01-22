@@ -1,5 +1,5 @@
 ## gRPC Gateway
-The grpc-gateway is a plugin of the Google protocol buffers compiler protoc. It reads protobuf service definitions and generates a reverse-proxy server which 'translates a RESTful HTTP API into gRPC.
+The grpc-gateway is a plugin of the Google protocol buffers compiler protoc. It reads protobuf service definitions and generates a reverse-proxy server which 'translates a RESTful HTTP API into gRPC. For more detail explanation you can follow [this link](https://github.com/grpc-ecosystem/grpc-gateway).
 
 ### Preparation
 - make sure you can run go-grpc example
@@ -11,10 +11,9 @@ go get -u github.com/golang/protobuf/protoc-gen-go
 ```
 
 ### Generate stub
-- cd proto
 - run `./generate.sh`
 
 ### Run gRPC
 - `go run server/server.go`
-- open http://localhost:8081/employees to check HTTP response
+- GET http://localhost:8081/employees to check HTTP response
 - `go run client/client.go` to check gRPC client call

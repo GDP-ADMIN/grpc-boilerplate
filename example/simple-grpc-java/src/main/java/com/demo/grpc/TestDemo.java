@@ -1,9 +1,9 @@
 package com.demo.grpc;
 
-import com.muhtar.rpc.book.BookMessage;
-import com.muhtar.rpc.book.BookMessageList;
-import com.muhtar.rpc.book.BookServiceGrpc;
-import com.muhtar.rpc.book.Empty;
+import com.example.rpc.book.BookMessage;
+import com.example.rpc.book.BookMessageList;
+import com.example.rpc.book.BookServiceGrpc;
+import com.google.protobuf.Empty;
 import io.grpc.ManagedChannel;
 import io.grpc.ManagedChannelBuilder;
 import io.grpc.StatusRuntimeException;

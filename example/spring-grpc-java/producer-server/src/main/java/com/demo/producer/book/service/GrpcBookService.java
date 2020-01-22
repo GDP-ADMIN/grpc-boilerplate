@@ -2,10 +2,10 @@ package com.demo.producer.book.service;
 
 import com.demo.producer.book.entity.Book;
 import com.demo.producer.book.repository.BookRepository;
+import com.example.rpc.book.BookMessage;
+import com.example.rpc.book.BookMessageList;
+import com.example.rpc.book.BookServiceGrpc;
 import com.google.protobuf.Empty;
-import com.muhtar.rpc.book.BookMessage;
-import com.muhtar.rpc.book.BookMessageList;
-import com.muhtar.rpc.book.BookServiceGrpc;
 import io.grpc.stub.StreamObserver;
 import lombok.RequiredArgsConstructor;
 import org.lognet.springboot.grpc.GRpcService;

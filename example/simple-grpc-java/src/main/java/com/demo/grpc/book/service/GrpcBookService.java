@@ -1,10 +1,10 @@
 package com.demo.grpc.book.service;
 
 import com.demo.grpc.book.entity.Book;
-import com.muhtar.rpc.book.BookMessage;
-import com.muhtar.rpc.book.BookMessageList;
-import com.muhtar.rpc.book.BookServiceGrpc;
-import com.muhtar.rpc.book.Empty;
+import com.example.rpc.book.BookMessage;
+import com.example.rpc.book.BookMessageList;
+import com.example.rpc.book.BookServiceGrpc;
+import com.google.protobuf.Empty;
 import io.grpc.stub.StreamObserver;
 
 public class GrpcBookService extends BookServiceGrpc.BookServiceImplBase {

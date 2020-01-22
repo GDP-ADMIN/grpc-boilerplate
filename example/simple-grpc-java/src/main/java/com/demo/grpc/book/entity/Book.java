@@ -1,6 +1,6 @@
 package com.demo.grpc.book.entity;
 
-import com.muhtar.rpc.book.BookMessage;
+import com.example.rpc.book.BookMessage;
 import lombok.Getter;
 import lombok.Setter;
 

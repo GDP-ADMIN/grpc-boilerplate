@@ -1,6 +1,6 @@
 package com.demo.consumer.book.vo;
 
-import com.muhtar.rpc.book.BookMessage;
+import com.example.rpc.book.BookMessage;
 import lombok.*;
 
 @Builder

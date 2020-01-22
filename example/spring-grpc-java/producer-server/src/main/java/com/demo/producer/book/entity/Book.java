@@ -1,6 +1,6 @@
 package com.demo.producer.book.entity;
 
-import com.muhtar.rpc.book.BookMessage;
+import com.example.rpc.book.BookMessage;
 import lombok.*;
 
 import javax.persistence.*;
