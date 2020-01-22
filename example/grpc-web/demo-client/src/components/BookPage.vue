@@ -21,7 +21,8 @@
 <script>
 
 import { BookServiceClient } from '../grpc/Book_grpc_web_pb'
-import { BookMessage, Empty } from '../grpc/Book_pb'
+import { BookMessage } from '../grpc/Book_pb'
+import { Empty } from 'google-protobuf/google/protobuf/empty_pb.js';
 import BookItem from './BookItem'
 import axios from 'axios'
 
